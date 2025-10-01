@@ -1,0 +1,53 @@
+Subject area covered by the course
+{
+    setup e navigation;
+    item setup and basic inventory management;
+    sales Order processing;
+    Netsuite site builder web store capabilities;
+    data management;
+    managing Netsuite.
+}
+
+2nd vídeo: Navigate the Application {
+    muitos paths para chegar no mesmo lugar
+
+    basic browser funcionality 
+
+    Objectivos do módulo: [
+        use netsuite security measures;
+        recognize Netsuite web page elements
+        personalize your home dashboard 
+        learn Netsuite terminology
+        use basic search Options
+        use multiple help resouces
+    ]
+
+    perguntas de segurança e caso esqueça precisará recriar sua senha é possível alterar a as perguntas e respostas pelo portlet settings
+    na página inicial.
+
+    se você quiser setar a password policy requirements
+
+    setup > company > general preferences
+
+    3 campos, password policy, minimum password length, password expiration id Days
+    esse 3 campos aqui são para parametrizar a senha padrão para todos os usuários.
+
+    password policy tem 3 opções. weak, medium e strong
+    weak: minimum 6 caractéres
+    medium: 8 caractéres e deve ter 2 caractéres A ou a, ou numéro
+    strong: 10 min e 3 dos outros caractéres
+
+    pass expiration mudar a senha por default (vazio) 180 dias e o máximo pra mudar de senha são 365 dias
+
+    se errar 6 vezes o login vc é bloquado por 30 min de fazer o login
+
+    
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,343 @@
+start or end/stops é com uma figura oval
+
+Actions/tasks um retangulo
+
+desicions(if else) é um losangulo
+
+sub-processos figura oval pontilhada
+
+workspace é onde vai fazer o fluxo do workflow
+context painel é a direita que é onde podemos alterar a propriedade do workflow {
+    workflow; state; transition
+}
+
+workflow fica mais fácil de analisar quebrando em partes menores 
+
+separar client side, server side, action execution
+
+quando vai alterar o registro colocar entry no trigger on
+
+Suiteflow Overview{
+    P habilitar o WF no netsuite (em inglês) Setup > company > enable features;
+    subtab SuiteCloud > e procurar o suiteflow e checar ele,
+
+    dps disso tem que habilitar para o user tbm: Setup > user/roles > manage roles;
+    aí tu escolhe qual quer mudar, vai em permissions > setup: e coloca WF full  e salva. 
+
+    PARA ACHAR LISTAS PESONALIZADAS lists > custom: e lá vai estar as listas dos custom recordtypes
+
+    tem como mudar o valor de um campo, o nome de um campo por WF
+
+    set field display Label
+    set field value
+    set field display type [normal, locked, desabled, ...]
+    set field mandatory
+    return user error
+
+    há actions que dá pra usar dentro do WF, no vídeo foi mostrado
+    [before user edit, after field edit{que é trigado dps do user mudar um campo}, before user submit]
+    
+    before user edit = [set field value, set field display Label]
+    after field edit = [set field display type, set field mandatory]
+    before user submit = [return user error]
+
+    no exemplo que ele mostrou, ele simplemente setou um valor num campo de 
+    lista e se tal valor fosse setado o campo sumiria, se não ele apareceria
+    tudo em edição do registro ou criação, sem salvar.
+    
+    
+    um Wf não pode estar em dois tipo de registros, apenas em um, porém um registro poder te N WF rodando
+    em cima dele;
+    os estados mostram em qual ponto do processo de negócio o registro está;
+    
+    quando se está editando o WF dá pra editar o workflow ou apenas o estado, isso na aba lateral
+    tem o state e o WF, sendo assim, é só selecionar o queres editar e clicar no lápis
+
+    os WF tbm tem o client side e server side
+}
+
+Understanding Client Triggers{
+    Actions and Transitions
+
+    o suiteflow muda a raiz do netsuite, alterando nativamente o suitebulding 
+    diversificar os workflows criando vários simples e juntar sua funcionalidade
+
+    bem semelhante a o que ocorre no clientScript (roda no browser do cliente)
+
+    sendo definidos por "users" em nomenclaturas
+}
+
+Configuring Actions on Data Entry{
+    Actions[   
+        set field display type
+        set field mandatory
+        set field value
+        return user error
+        show message
+        confire
+    ]
+    
+    ClientTrggers[
+        before user edit
+        before field edit
+        after field edit 
+        after field sourcing 
+    ]
+}
+
+Understanding Server triggers{
+    os WFs de servidor ocorrem em todos as etapas, criação, edição
+    visualização e salvamento.
+
+    Before record load
+    Before record submit
+    After record submit
+
+    só o wf de server pode iniciar a execução de um wf
+    porém tanto client quanto srver podem trabalhar em conjunto
+
+    trigger on Entry: é quando entra na tela, e um reload da pagina o re-ativa
+    trigger on before record load: ai sim, caso o reload seja feito ele vai rodar de novo
+
+    send email é bom para on Entry, pois se der o reload na page não vai exercutar de novo
+
+    trigger on entry executa quando entra em um estado 
+    trigger on exit executa quando sai de um estado 
+
+    usar wf de server quando for mudar algo na visualização da pg before record load;
+    quando quiser que alguma ação seja executada só uma vez, use o entry or exit server trigger;
+    se o user relaod the page, o wf não executará de novo se estiver nesses triggers da linha de cima;
+    quando for fazer validações antes de enviar o registro use o before record submit;
+    se for criar algum registro, mandar email ou manda o user para outra pg, usar o afet record submit
+}
+
+Configuring Actions on the Record Load {
+    before user edit and before record load [Set field display type, set field mandatory, set field display label]
+    FUNCIONA EM TODOS
+    set field value, funciona no before user edit já no before record load só em criação
+    return user error, no before user edit ele aparece como um window.alert, e no server ele dá o erro de servidor (white screem)
+
+    não é possivel remover um botão colocado por um add button com um remove button
+
+    Lock record, deixa o registro só como view removendo o botão de editar por exemplo
+
+    Joins
+    o regitro de transactions join with costumer and itens
+    Task with Employee
+
+    setar os "set fields" em ambos server e client para fazer um display persistence (quase salvar as alterações, 
+    por conta de manter o campo daquele jeito sem mudá-lo definitivamente)
+
+    EVENT TYPES não são executados por ações de client e nem por wf programados
+
+    caso coloque um campo inline na edição ele não poderá ser mudado mais
+}
+
+Configuring Actions on Record Submit {
+    multstate WF
+
+    multstate workflows ajudam para fazer a manutenção dos mesmos
+    por exemplo, voce pode criar um registro, enviar um email e ir para o registro, 
+    isso em um estado apenas OU voce pode criar um estado para cada etapa do processo
+    criar o registro ===> enviar o email ===> e ir para o registro.
+
+    fazer por multstates é mais fácil de "debugar" o WF, assim deixando mais fácil de resover erros
+
+    e fica melhor para ver e dar manutenção
+
+    Actions: [Create Record, Send Email, Transform Record, Go to page, Go to Record, Return User Error]
+
+    Diferenças entre beforeRecord submit e afterRecord submit
+
+    Before return user error
+    After Transform Record, send email, go to Page/Record
+
+    quando configurar um erro no lado do cliente, configurar o mesmo erro no lado do servidor
+    tem que ser igual para não haver erros a parte
+
+    set field value é melhor no afterSubmit
+
+    transform record pode ser agendado também
+
+    Go to Record, se não especificar um ID, o WF o cria um registro baseado no
+    registro atual. 
+
+    Actions no record submit(triggers) {
+        afterSubmit,
+        Entry,
+    }
+
+    caso você coloque um go to record action, ele entrará em outro criar o registro
+    (não sei se tem como passar ID)
+    action de send email não é executado no before submit
+
+    O email só é mandado no aftersubmit, pode ser configurado na transition como aftersubmit
+    no exemplo foi jogado no entry do state
+}
+
+Troubleshooting Workflow Execution {
+    ActiverWorkflow e WF history
+
+    aquela aba de Workflow lá no registro, é por onde verei os logs
+    assim conseguindo saber o que houve e em qual parte do wf foi
+
+    em clientside (user) não aparece no log 
+    o log não está ativa por default, precisa ativar campo
+    "enable logging" quando cria
+
+    se deixar como testando, o enable logging será checkado por default
+
+    SS = single state
+    MS = multi state 
+    ordem de execução = Entry > load > save > approval
+                          ss     ss     ms       ms
+    o log ajuda a entender o comportamento do wf
+}
+
+Bulding Approval Workflows{
+    pode ser criado para transações
+
+    um estado de entrada para ver a condição de aprovação
+    + um ou outros estados para aprovado e reprovado
+    duas transições, uma para cada estado
+
+    step-based approach{
+        create workflow states and buttons
+        restrict actions using condictions
+        adjust field record display characteristcs
+        define approval statuses
+        add notifications
+    }
+
+    Actions x desciption{
+        add button : add a custom button to a record form (servertriggers: before record load, Entry) ,
+        remove button: removes a standart netsuite button from a record form (não consegue remover botões criados com o Add button, mesmos servertriggers do de cima),
+        lock record: makes a record read-only by hiding the edit button(mesmos servertriggers),
+        send email: send notifications to the individuals involved in the approval process
+    }
+
+    End states que podem ser criados:
+    
+    Exiting{
+        representado pelo end em baixo
+        permite que o workflow continue processando o registro
+        ações serão executadas todas as vezes que o registro passar por estado
+    } 
+
+    Non-Exiting{
+        ele para a continuação do processamento do registro após as ações desse estado
+        ele pode congelar o registro num estado particular co Workflow
+        representado por duas setinhas formando um circulo at the botton left-corner
+    }
+
+
+    Esse end state pode ser configurado pelo check box de não sair do workflow
+
+    Criar actions groups pode ajudar muito em relação a usar as mesmas ações em outros estados
+
+    Há dois padrões de supporting multiple Approvals
+}
+
+Updating Record Sublist{
+    To access Itens and Expenses
+
+    formula que pode ser usada = {line.rate} * .25 (para multiplicar o rate da linha)
+
+    Sublist action group {
+        configure action and transaction de sublistas.
+        pode processar transactions body fields e workflow state fields
+        
+        trabalham da mesma forma que actions groups standart porém(   
+            condições podem ser definidas nas sublist action group
+            level and on individuals actions in the group
+        )
+    }
+
+    creating a sublist group{
+        1 edit the WF state,
+        2 create a new sublist action group,
+        3 select a supported sublist,
+        4 Edit the sublist action gruop,
+        5 click new action and configure
+    }
+
+    ações que podem ser configuradas no sublist action{ (devem ser configuradas no Server)
+        create record,
+        set field value,
+        send email,
+        return user error 
+    }
+    
+     dá para recuperar campos de sublista em new or existing record
+
+    não dá para setar um transaction body or sublist field values on existing records
+    
+    Processing an entire sublist actions{  (não pode ser configurado e nem acionado por sublist action group)
+        Create Line,
+        set field display label,
+        set field display type,
+        set field mandatory.
+    }
+
+    Processing sublist line field validations actions{
+        set field value,
+        return user error
+    }
+
+    create line action não pode ser configurada em sublist action group
+
+    be aware od action execution order in states that contains sublist action groups
+
+    só a o tipo de condição disponível em sublist action group são com body fields, não com sublist fields (o que só dá para ser configurado no action level)
+
+    COMO BOA PRÁTICA: sempre que possível, colocar condições no sublist action group quando for possível
+    uma coisa importante, todas as ações de sublist deme dar true, se não vai dar errado
+
+    as ações devem ser configuradas em server side, porém, set field value e return user error podem ser configuradas
+    noo after field edit e after field sourcing. 
+
+    se for mexer em item, deve ser selecionado transaction record type e selecionar os sub types
+
+    Mountain Bike - Warrior Trail
+    Bruce Green
+}
+
+Workflow Fundamentals{
+    useful and best practices
+
+    Workflow Design
+    workflow initiation
+    workflow condictions
+    Processing workflows / actions  at after record submit
+    workflow logging
+
+    tips{
+        não tente fazer muito em apenas um wf
+        separar o processamento do WF entre cliente e servidor, initiation e action execution
+        leverage sub workflow to handle additionl processing tasks
+    }
+
+    WF initiation{
+        configurar a iniciação do WF com algumas condições para que caso não tenha a informação
+        ele não rodar, assim deixando o registro mais leve pra carregar,
+        selecionar o contexto e tipo de evento apropriados para limitar a iniciação do wf,
+        nunca use o ALL do trigger type
+    }
+
+    WF conditions{
+        limitar o uso do Old Record fo Value Field
+        limitar o uso das saved search condictions quando possível, (use standart condictions or formulas),
+        se precisar de uma busca, configurar isso no começo do wf para que ele não fique rodando em cada ação do WF,
+        limitar o uso de joins on related records (use SQL formulas, e criar um "source-in" related record values)
+    }
+
+    Processing Workflows and actions at after record submit{
+        usar setField value no before record submit do que no after,
+        se o WF seta campos por default quando se inicia, não repetir esse feito com set field value,
+    }
+
+    Workflow Logging{
+        Log desnecessário pode implicar numa mal perfonmance do WF
+    }
+}
+igor == papacapim
