@@ -1,0 +1,100 @@
+Notas gerais: 
+
+Suitescript limitations => uma limitação é a governança e cada tipo de script tem sua gorvenança especifica. 
+
+pode ser usado pra:
+
+add validações em regitros; criar processos automatizados como criar a chamada de ligação para um lead;
+gerar e enviar um pdf quando o lead vira um prospect, etc...
+
+AMD Pattern Definição de módulo ascincrono (AMD Asynchronous Module Definition) é um padrão de código que permite o carregamento de módulos no script (define)
+
+require é usado para fazer um script de debug sob demanda, (deve ser esse tópico que entra no console e faz o require)
+
+EX sintaxe
+
+require(['N/record', 'N/file'], (record, file) =>{
+    let salesOrder = record.create({...})
+    let priceList = file.load({...})
+})
+
+é um parâmetro de call back que é usado após o define/require por isso o segundo param é seguido do => })
+
+SEMPRE A ORDEM QUE É IMPORTADO TEM QUE ESTAR NA MESMA ORDEM DA FUNÇÃO DE CALLBACK
+
+Módulos: exemplos da doc N/record, N/email, N/file, N/https, N/runtime, N/query   
+
+Query, fazendo muitos joins com muitos critérios que são definidos no Where. 
+
+Script-types
+
+Browser => clientscript
+Both => Suitelet
+Server => UserEvent, Scheduled, Map/Reduce
+
+ClientScript => {
+    um script que roda no browser que pode rodar registros o único que roda no browser do cliente
+}
+
+UserEvent => {
+    use a User Event pra fazer validação em registro ou fazer o trigger em map ou schedule
+}
+
+Scheduled =>{
+    use um scheduleScript para processar dados no futuro ou recorrências como agendado
+}
+
+Map/Reduce =>{
+    aguenta muitos dados a serem processados, é o ideal para quando os dados estiver em cluster menores com base em uma chave especifica
+    os cluster podem então ser reduzidos, e eventualmente resumidos. Processamento paralelo, cessão automática de recursos e agendamento
+    são beneficios
+}
+
+Suitelet =>{
+    fazer páginas customizadas com o front do netsuite, usando as APIs no backend.
+}
+
+Debbuging suiteScripts{
+    tem como fazer um debug usando o chrome Devtools diretamente com netsuite, parece que é só pelo chrome que é completamente aceito pelo
+    suitescript. Enquanto outros browsers não tem tal suporte
+
+    Usar o debug na produção pode afetar dados e registros como um todo, então NÃO É INDICADO FAZER ISSO LÁ
+
+    segue pra customization : scripting > script debugger 
+
+    sempre debugar usando a mesma versão da API e é possível aplicar um script do zero e usar uma deploy já existente.
+
+
+    ON DEMAND tem que usar o require para rodar direito e basta copiar e colar para dentro do debugger
+
+    ex de script sob demanda
+
+    require(['N/record'], (record) => {
+	let newContact = record.create({
+		type: record.Type.CONTACT
+	});
+	newContact.setValue({
+		fieldId: 'firstname',
+		value: 'Bob'
+	});
+	newContact.setValue({
+		fieldId: 'lastname',
+		value: 'Jones'
+	});
+	newContact.setValue({
+		fieldId: 'subsidiary',
+		value: 1
+	});
+	let newRecord = newContact.save();
+	log.debug({
+		title: 'Record successfully saved',
+		details: newRecord
+        });
+    });
+
+    Pra rodar um script pelo debug, tem que estar com o status como testing, dá para testar um script em produção auterando ele para testing também. 
+    pra debuggar um script que já existe baste só selecionar o debug existing, selecionar e fechar
+
+    parei no debug controls
+}
+

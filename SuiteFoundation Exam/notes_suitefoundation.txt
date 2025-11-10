@@ -41,7 +41,69 @@ Subject area covered by the course
 
     se errar 6 vezes o login vc é bloquado por 30 min de fazer o login
 
+    para setar um portlet, clicar nas 3 barras para configurar 
+
+    no final da página principal você encontra a versão do netsuite que está a base 
+
+    e setting portlet você pode alterar as perguntas de segurança, senhas e tudo mais (lembrando que a senha é baseada no policy security 
+    criada no no critério acima)
+
+    o campo from email no set preferences é onde posso estipular outro email diferente do que uso para fazer a login
+    signature é a assinatura que vai no e-mail
+
+    campo de maximum entries in dropdowns é onde podemos estipular quantas linhas mostra na lista das buscas.
+    field level help, mostra um summary do campo em questão.
+
+    pro suiteFoudations ele sugere estudar os campos do general em set preferences
+
+    center é a barra de cima onde fica as opções, adm tem a central clássica
+    dashboard é onde é ficam o portlets e podemos configurar eles conforme queremos clicando nos 3 pontos
+
+    Setting é onde muda a senha, as perguntas e afins.
+
+    personalize é onde add mais portlets 
+
+    KPI Key performance indicator
     
+    layout muda o layout do dashboard
+
+    my login audit portlet, é onde podemos ver alguns dados sobre nosso login, como quando nossa senha expira, o ultimo login, quantidade logins sucess e failures
+    e ultimo acesso por mobile.
+    que pode ser usado para monitoramento caso alguém tente acessar sua conta
+
+    NETSUITE TERMINOLOGY
+    transaction tab, tudo que envolve dinheiro  
+
+    formulário, onde é inputado os dados e o registro é onde armazenam dados
+    no formulário podemos manipular os campos, como nome, esconder, bloquear e afins
+
+    global search
+
+    OBS: sempre vai usar as 3 primeiras letras e 2 pontos na busca global
+    filter na global
+    emp: funcionário 
+    page: pagina
+    cus: customer
+    
+    pra mudar nome dos registros Setup > company > rename record/transacions (Assim você muda os nomes dos registros)
+    segundi esse path acima você consegue criar uma lista da busca global, basta usar as 3 primeiras letras de tudo
+
+    dá para usar operador OR na busca global, e usar o %% é tipo um coringa para validar palavras e _ para validar uma letra
+    quick search portlet é basicamente a busca global
+
+    e mudando ele nos 3 pontos, é possível aplicar mais filtros, além do que são disponibilizados
+
+    se clicar no nome entra como view e edit edita o registro.
+
+    quando abre muitas abas, pode ser que gere o erro inesperado, assim é necessário sair e voltar pro netsuite para solucionar o problema
+
+    podemos ver os registro que estavamos no relógio e podemos ver pelo menos 12 na aba, e se clicar no relógio mesmo vamos ver 100 registros que vimos no passado
+
+    se clicar 2x no nome do netsuite ao entrar numa lista, você consegue ver os detalhes de performance (os números dessa tela são segundos)
+
+
+
+     
 }
 
 
