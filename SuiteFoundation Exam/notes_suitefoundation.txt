@@ -77,24 +77,26 @@ Subject area covered by the course
     formulário, onde é inputado os dados e o registro é onde armazenam dados
     no formulário podemos manipular os campos, como nome, esconder, bloquear e afins
 
-    global search
+    global search{
+        OBS: sempre vai usar as 3 primeiras letras e 2 pontos na busca global
+        filter na global
+        emp: funcionário 
+        page: pagina
+        cus: customer
+        
+        pra mudar nome dos registros Setup > company > rename record/transacions (Assim você muda os nomes dos registros)
+        segundi esse path acima você consegue criar uma lista da busca global, basta usar as 3 primeiras letras de tudo
 
-    OBS: sempre vai usar as 3 primeiras letras e 2 pontos na busca global
-    filter na global
-    emp: funcionário 
-    page: pagina
-    cus: customer
-    
-    pra mudar nome dos registros Setup > company > rename record/transacions (Assim você muda os nomes dos registros)
-    segundi esse path acima você consegue criar uma lista da busca global, basta usar as 3 primeiras letras de tudo
+        dá para usar operador OR na busca global, e usar o %% é tipo um coringa para validar palavras e _ para validar uma letra
+    }
 
-    dá para usar operador OR na busca global, e usar o %% é tipo um coringa para validar palavras e _ para validar uma letra
-    quick search portlet é basicamente a busca global
+    quick search portlet é basicamente a busca global{
+        e mudando ele nos 3 pontos, é possível aplicar mais filtros, além do que são disponibilizados
 
-    e mudando ele nos 3 pontos, é possível aplicar mais filtros, além do que são disponibilizados
+        se clicar no nome entra como view e edit edita o registro.
+    }
 
-    se clicar no nome entra como view e edit edita o registro.
-
+    open
     quando abre muitas abas, pode ser que gere o erro inesperado, assim é necessário sair e voltar pro netsuite para solucionar o problema
 
     podemos ver os registro que estavamos no relógio e podemos ver pelo menos 12 na aba, e se clicar no relógio mesmo vamos ver 100 registros que vimos no passado
