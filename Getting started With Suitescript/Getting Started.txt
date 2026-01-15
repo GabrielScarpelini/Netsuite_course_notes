@@ -92,9 +92,14 @@ Debbuging suiteScripts{
         });
     });
 
-    Pra rodar um script pelo debug, tem que estar com o status como testing, dá para testar um script em produção auterando ele para testing também. 
+    Pra rodar um script pelo debug, tem que estar com o status como testing, dá para testar um script em produção alterando ele para testing também. 
     pra debuggar um script que já existe baste só selecionar o debug existing, selecionar e fechar
 
-    parei no debug controls
+    Só 2 tipos de scritps não podem ser debugados client e map reduce
+
+    é possível debugar um client script pelo dev tools do console p pegar mais informações jogue esse dado no help center Debugging Client Scripts
 }
 
+N/record Module{
+    
+}

@@ -1,0 +1,32 @@
+Suitescript 2.0{
+    1st module Introducing scripts 2.0{
+        1.0 todas as funções são carregadas no escopo global, 
+
+        vantagens do 2.0: 
+            é modular, assim podemos criar os módulos a parte (libs)
+            é mais eficiente que não carrega tudo que não é usado
+            mais fácil para fazer um upgrade para um possível 3.0
+            a sintaxe é mais parecida com o Node raiz
+        
+        é mais limpo que o 1.0 que é possível usar objeto para passar os parâmetros usados por algum método.
+
+        debug{
+            passando sobre debugger
+        }
+
+        walkthrougth{
+            na sessão suitecloud na lateral do helpcenter é possível pegar os dados do suitescript 2.0 diretamente. 
+            (é meio ruim para localizar, pesquise suitecloud e produre pelo 2.0 modules)
+            
+            JSDoc é a parte que vc indica o tipo do script e a versão. @NApiVersion @NScriptType
+
+            É possível passar o método completo e passar no return (depreciado e horrível) ex return {aftersubmit: function()...}
+            (o professor do curso faz isso...)
+            É possível passar funções nome diferente para o return, já que ele volta a função do atributo do objeto do return
+
+
+        }
+
+    }
+    
+}
