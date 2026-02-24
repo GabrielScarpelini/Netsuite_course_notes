@@ -103,7 +103,21 @@ Subject area covered by the course
 
     se clicar 2x no nome do netsuite ao entrar numa lista, você consegue ver os detalhes de performance (os números dessa tela são segundos)
 
+3rd Vídeo: Setup and Enable feature{
+    Objetctives: Enable Features, Set up Tab Options, General preferences, Home > set preferences, Set up accounting | sales etc...
 
+    Perguntas que podem cair: {
+        Does this feature exists in Netsuite,
+        Know what turning on and off does, especially: advance shipping, advance receiving, multi-anything
+    } 
+
+    Enable Features{
+        onde dá para habilitar ou desabilitar as features.
+
+        Advanced Taxes > uma vez setado não pode ser removido
+        Advance shipping: fica em transactions
+    }
+}
 
      
 }
