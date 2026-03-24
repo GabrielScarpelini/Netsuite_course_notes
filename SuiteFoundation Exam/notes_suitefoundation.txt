@@ -118,7 +118,22 @@ Subject area covered by the course
         Advance shipping: fica em transactions
     }
 }
+4th Video: Set upt itens{
+    resumo{
+        resumo:
+        identificar tipos de item de items, 
+        relacionar os requisitos do negócio com a funcionalidade do netsuite;
+        obter informações em real time de quantidade, preço, valor e asset value;
+        verificar os níveis de estoque, reduzir custos e maximizar os lucros
+    }
+    Objetivo{
+        Identificar considerações de implemtanção e questões;
+        Habilitar o item/invetário em eneble features e preferencias da empresa;
+        Setar os tipos de itens;
+    }
 
+    0:45s
+}
      
 }
 
