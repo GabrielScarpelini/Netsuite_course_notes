@@ -132,6 +132,72 @@ Subject area covered by the course
         Setar os tipos de itens;
     }
 
+    No eneble features, ir até o items e inventário é onde temos os dados de lidar com inventário e itens,
+    é possível definir valores, fifo e lifo
+    COGS cost os good sold
+    web prefenrence temos como setar dados para presença na WEB de acordo com o que o cliente necessitar. e commerce é uma delas
+
+    
+    preferencias contábeis e métodos de custos: {
+        setup > accounting > acc preferences Aba itens e transações. 
+
+        Nesta aba onde podemos setar as contas padrão para as transações (contas de recebíveis, Goods sold etc)
+
+        inventory tab podemos deixar as compras para uma localização apenas e da para setar um alerta de vencimento do lote.
+    }
+
+
+    Revisão de items:{
+        List > acc > itens
+
+        inventoryItem: {
+            itens de estoque, na aba de compras e inventário, podemos colocar os dados e valor de compra, descirção de compra etc...
+            podemos colocar fornecedor na aba de purchase. 
+            Accounting, é onde setamos as contas do item e até o tax schedule. 
+
+            set up a inventory item. que pode ser lote numerado ou serializado. 
+            dá para setar o costing method e o valor de compra e colocar o valor de venda também nas subtabs designadas.
+
+            SÓ DA PARA USAR O MATRIX DOS ITEMS SE O ADVANCED INVENTORY MANAGEMENT
+            esse carinha aí, dá para criar um item pai e dentro do assistente é possível colocar mais derivações, como tamanho, cor etc... Definido pelo usuário.
+            primeiro seta o item pai, depois cria as listas para fazer a matriz. (não pode ter abreviações iguais) 
+            
+            Após setar os atributos designados no passo de propriedades, é possível fazer as possíveis combinações cruzandos as listas de atrubitos que criamos. 
+            e no ultimo passo, é onde poderá ser eliminado as combinações que não temos (exmeplo se temos uma lista de tamanhos com 5 tamanhos e uma de cores com 5 cores
+            na combinação estarão os 25 itens, porém é nesse passo que podemos definir qual não teremos, assim diminuindo o valor em questão)
+
+            ele mostrará quantos foram criados de quantos considerados
+
+            NA CRIAÇÃO DE ITENS POR MATRIZ, TEM UM QUANTIDADE LIMITE A CONSIDERAR 2000 itens o limite.
+
+            Após isso, eles ficaram aninhados no item pai e para fazer a atualização do preço de todos em conjunto entre no item pai e na aba de vendas coloque o preço
+            na sublista. O mesmo é valido para as contas, E PARA APLICAR NA MATRIZ COMPLETA, NO BOTÃO ACTIONS TERÁ O "UPDATE MATRIX"
+        }
+
+        noninventoryitens: {
+            tem 3 tipos, purchase, sale, resale
+            purchase: {
+                algo que você compre para utilizar em área;
+                dá para colocar a expense account    
+            }
+            resale{
+                algo que você compre para revender (estoque em Supermarkt)
+                é bem parecido com o purchase, só muda a conta, income account
+
+            } 
+            sale:{
+                produtos que a companhia fabrica ou vende sem precisar de entrada.
+                income account.
+            } 
+
+            É O ÚNICO TIPO DE ITEM QUE PODE SER CONVERTIDO EM ITEM DE ESTOQUE, E ISSO AJUDA QUE NÃO É PERDIDO O HISTÓRICO DE VENDAS E COMPRAS DELE APÓS A MUDANÇA.
+            dá para converter para serializado, lote numerado e para item de estoque padrão.
+        }
+
+        22:39
+
+    }
+
     0:45s
 }
      
