@@ -118,7 +118,7 @@ Subject area covered by the course
         Advance shipping: fica em transactions
     }
 }
-4th Video: Set upt itens{
+4th Video: Set up itens{
     resumo{
         resumo:
         identificar tipos de item de items, 
@@ -194,19 +194,129 @@ Subject area covered by the course
             dá para converter para serializado, lote numerado e para item de estoque padrão.
         }
 
-        22:39
+        Service Item: {
+            Geralmente usado em projetos, com projetos avançados, assim é possível fazer a parametrização para sempre que o item for vendido será criado um
+            um projeto para aquela venda, Serviços de venda e revenda. (tem as 3 frentes de subitpos)
+
+            se a feature estiver habilitada, é possível colocar despesas no pedido de compra, se não só será possível colocar item, só temos a conta de despesas.
+            preferencias, podemos setar de ele é "entregável ou recebível" e isso vale para todos os subtipos.
+
+            Itens de serviço podem ser usados como rastrteio de tempo em horas faturáveis (assim como a ACS usa), intercompany time feature
+        }
+
+        AssemblyItens, item group, Kit/Package: {
+            assembly: {
+                pode ser lote numerado ou serializado, não temos o valor de compra por conta que lá em componentes conseguimos colocar o item que vamos usar
+                e podemos colocar quantidade, assim o item que foi criado como noninventory ou inventory itens são selecionados e assim puxam o valor da parametrização deles
+
+                Assim é possível colocar mais de um item para o assembly, service, other charges e othergroups (nas bases que temos, não localizei os componentes)
+
+                Na aba vendas e precificação é possível colocar o preço do item em si, 
+
+                Na aba contabilidade temos as contas, asset acc, cogs acc, income acc e dá para setar o tax schedule
+
+                caminho para criar assemblies> Transaction > Manufacturing > Build Assemblies
+                nesse registro, selecione o assmbly item que deseja aplicar, selecione a localidade, e a quantidade de itens que serão criados
+                e os componentes serão atualizados com a quantidade que será necessária para criar o assmebly Item, é possivel setar os componentes individualmente.
+                criando pelo build, o estoque será atualizado com as quantidades dos componentes atualizados.
+            }
+            item group: {
+                é para criar um item que carregue outros itens, ele tem os componentes tem o flag de display components on transaction. Assim é possível 
+                carregar os componentes desse "pacote" na transação. (é bem parecido com o Assembly), ele não tem nenhum tab de parametrizção por conta que
+                cada componente já tem o seu individual.
+            }
+            Kit/package: {
+                temos também os componentes na aba de inventário e compra, no sales pricing da para colocar o base price para o kit,
+                e na acc tab só temos a income account. Não são itens que são mantidos em stock, eles precisam ser compilados conforme
+                eles são cumpridos, o motivo de ser um kit package sempre reportarão 100% de lucro.
+            }
+
+            ao colocar na transação, o único que mostra os componentes são os group, ambos os outros mostram só o valor que foi definido no pricing dentro dos itens.
+            o assembly e package só aparecem caso seja impresso (template da transação como advanced html) que irá mostrar todos os itens nele contidos. 
+        }
 
     }
 
     0:45s
 }
-     
+5th Vídeo: set up pricing: {
+    Define sales pricing, strategy options prove multiple methods to capture your pricing strategy.
+    How do you sell your products? 
+    Whats your pricing strategy?
+
+    Objectives: {
+        Enable pricing features and defing preferences;
+        create price level;
+        define a quantity pricing Schedule;
+        set up a pricing group;
+        set up pricing, on an item record and customer record;
+        update item prices.
+    }
+
+    Sales Pricing Subtab:{
+        no item de estoque na subtab de sales pricing conseguimos setar os valores em mult currency,  
+        se estiver utilizando o ecommerce, o valor que irá será o online price,
+
+        base price always in the top, online price always in the botton
+    }
+    Enable pricing features: {
+        enable features, transactions e sales tab
+        muitple prices: mantem multiplos preços por item, podendo setar um item padrão para cada cliente
+        quantity princing: dá para dar desconto de acordo com a quantidade de itens a vender;
+
+        Accounting preferences: item/accounting {
+            sales princing tab: Tem o campo de máximo de quatidade com preço base definido, o máximo é 50
+            liberar o disconto por quantidade;
+            incluir reembolso na venda forecast reports;
+            incluir a entrega no forecast reports;
+        }
+    }
+
+    using pricing feature:{
+        setup prince levels;
+        define quantity price levels.
+        create pricing groups
+
+        setup > acoounting > accounting list.
+        filter in price level. (são aqueles preços que ficam na aba de sales dos itens, é aqui que cria outros ou altera algum)
+
+        aqui é possível setar o nome o desconto aplicado (desconto tem que ser negativo e markup é positivo)
+        MARKUP: um valor que representa a diferença do valor da venda com o custo do produto ou serviço. 
+        
+        tem uma flag de update existing prices que ao ser aplicada o valor do base price dos itens serão aplicados com a taxa de markup ou
+        desconto. EX se o base price for 100 e coloquei um com nome "desconto" com -10% o valor do desconto firará 90 e para o markup só 
+        aumentará o valor da porcentagem.
+
+        quantity pricing schedules: {
+            são templates que podemos aplicar em um item que gerará automaticamente preços de compra e venda baseados na quantidade.
+            list > account > quantity pricing levels
+            dento desse registro podemos passar o nome, na sublista colocamos quantidade e o desconto (Sempre negativo)
+            campo de calcular a quantidade de desconto, temos algumas seleções para este campo:
+                por linha: que se aplica na quantidade da linha
+                por quantidade no geral: que se aplica para todas as linhas da transação
+                parent quantity: verifica os itens de matriz e ignora as opções de tam e cor (no exemplo dos atributos que temos)
+                overall schedule: parece ser o memso que coloquei na quantidade em geral (ele aplica o valor do desconto de 
+                acordo com a quantidade dos itens na transação QUE PERTENCEM AO MESMO PRICING SCHEDULE)
+            
+            o bloco abaixo é dentro do item
+            é aplicado no campo quantity pricing schedule e ele aplicará dinâmicamente os valores do desconto e a quantidade no registro.
+            use marginal rates: parece que o valor será aplicado pela qantidade até que atinja outro nível de desconto (não entendi)
+            calculate quantity discounts, o campo do tipo de quantidade (o mesmo do pricing schedule) 
+        }
+
+        pricing group: {
+            setup > accounting > accounting list: 
+            filtro pricing group
+            só tem o nome do princing group
+            se for colocar todos os itens da matriz criada (exemplo) basta só alterar o parent
+            lembrando que ao mexer no pai, precisa fazer o update matrix.
+        }
+
+        19:28
+    }
 }
 
-
-
-
-
-
-
-
+https://take.quiz-maker.com/Q4MX65G9E#R376214-0608Cfec (83 perguntas)
+https://take.quiz-maker.com/Q4WLMF7N6#R1702101-2B9e2e8e (65 perguntas)
+https://take.quiz-maker.com/QQWKCJU72 (igual Sample Test oficial)
+https://take.quiz-maker.com/QQVH1JFM0#R247849-B1B4647a (131 perguntas)
