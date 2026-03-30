@@ -299,7 +299,7 @@ Subject area covered by the course
                 acordo com a quantidade dos itens na transação QUE PERTENCEM AO MESMO PRICING SCHEDULE)
             
             o bloco abaixo é dentro do item
-            é aplicado no campo quantity pricing schedule e ele aplicará dinâmicamente os valores do desconto e a quantidade no registro.
+            é aplicado no campo quantity pricing schedule e ele aplicará dinamicamente os valores do desconto e a quantidade no registro.
             use marginal rates: parece que o valor será aplicado pela qantidade até que atinja outro nível de desconto (não entendi)
             calculate quantity discounts, o campo do tipo de quantidade (o mesmo do pricing schedule) 
         }
@@ -310,9 +310,42 @@ Subject area covered by the course
             só tem o nome do princing group
             se for colocar todos os itens da matriz criada (exemplo) basta só alterar o parent
             lembrando que ao mexer no pai, precisa fazer o update matrix.
+
+            Ele pode ser atribuído ao cliente e assim se ele comprar (sales order) um item desse grupo, ele receberá um desconto especifico.
         }
 
-        19:28
+        item record e vamos setar o pricing: {
+            inventory Item:{
+                sales/princing tab, temos os campos de quantity princing, calculate quantity discount e princing group
+                caso set o princing schedule, serão setados os preços dinamicamente.
+            }
+            lembrando que esses 3 campos mencionados é como é feito a parametrização dos dados no item, assim pode fazer outros itens com os mesmos dados e assim
+            sucessivamente. 
+        }
+
+        princing in a customer record: {
+            customer rec > financial tab
+            podemos setar o princing level, no final do registro, podemos setar o group pricing para o cliente, exemplo as camisetas group de aparencia, e passar o price level
+            assim podemos definir se para tal price level terá desconto ou não.
+
+            na próxima tab de item pricing: podemos colocar preço para itens especificos para esse cliente. 
+            a sequencia que o NS olha para o princing do cliente é: Item pricing  (se não tiver dados) > group pricing (se o item que ele tá comprando pertence a algum grupo ele vai setar 
+            o price level que está na linha) > price level do corpo (o que será levado em consideração se o cliente não tiver os dados o bottonpage preenchidos) e se deixar em branco
+            ele recebera por default o "base price" 
+        }
+
+        Dá para alterar na própria transação mesmo após o set automático. NÃO PODE OCULTAR O AMOUNT DA LINHA SE NÃO PODE DAR PROBLEMA DE CALCULOS já o pricing entre outros podem ser
+        ocultos.
+
+        Atulaização em massa:{
+            listas : atualização em massa > mass update
+            listas : atualização em massa > update prices
+            itens: update item price, é possível setar os dados de acordo com com o price levels, passa o valor no amount ( se colocar % será a porcentagem, se não será o valor add)
+            based on é onde indicará o valor que será alterado, um existentem, custo recente, média entre outros tem um campo de arredondamento, que pode ser usado de acordo com o param
+            passado lembrando que é apenas os valores uqe serão alterados. 
+        }
+
+        set up pricing 1 to 7 
     }
 }
 
