@@ -349,6 +349,14 @@ Subject area covered by the course
     }
 }
 
+6th Vídeo: Order Management: {
+    este módulo trata de administrar inventários (warehouses) e Entrega de pedidos com controle de tempo.
+    
+    explora as considerações de habilitar o gerenciamento de order e as tarefas de configurar o order management
+    e o passo a passo de cumprimento do pedido de vendas.
+
+}
+
 https://take.quiz-maker.com/Q4MX65G9E#R376214-0608Cfec (83 perguntas)
 https://take.quiz-maker.com/Q4WLMF7N6#R1702101-2B9e2e8e (65 perguntas)
 https://take.quiz-maker.com/QQWKCJU72 (igual Sample Test oficial)
