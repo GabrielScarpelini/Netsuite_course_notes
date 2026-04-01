@@ -353,7 +353,36 @@ Subject area covered by the course
     este módulo trata de administrar inventários (warehouses) e Entrega de pedidos com controle de tempo.
     
     explora as considerações de habilitar o gerenciamento de order e as tarefas de configurar o order management
-    e o passo a passo de cumprimento do pedido de vendas.
+    e o passo a passo de atendimento do pedido de vendas.
+
+    basicamente vamos ver o fluxo de criação do (customer) pedido de venda, desde a (prospect) cotação, aprovação, cumprimento do pedido, criação da fatura e aceitar o pagamento.
+
+    a warehouse trabalha com todos o pedidos que estão com o status de pending fullfilment status, após eles aplicarem todos os itens do pedido ele é atualizado para
+    pending billing é possível que eles seja parcialmente atendido então ele ficará com parcialmente atendido de pendente do faturamento.
+
+    SO são trnasaçoes que podem vender Bens ou serviços
+    não tem impacto até o item for entregue ou o serviço completo
+
+    no GL impact dá para ver se foi postado
+    
+    pode ser gerado por um recebmento de de pedido de compra;
+    uma compra online;
+    uma venda online que foi gerada a partir da central do cliente; (onde os distribuidores ou revendores podem criar os pedidos deles)
+    
+    podemos selecionar os formulários para o pedido de venda, entre eles: standart == sales order, salesorder cash sale, invoice, progress billing
+    pode ser customizar cada um. 
+
+    se não passar o terms, and paymenthod, se não selecionar nada nesses campos o sistema vai entender que é uma invoice e gerar uma invoice.
+
+    no enable features vamos em transações na basic features aí podemos habilitar ou desabilitar diferentes transaçãoes no sistema
+    o advanced shipping caso não setado, assim que o pedido for atendido será criada fatura dele, se não alguém o account receivable dpto vai fazer
+    a geração da invoice. 
+
+    acc preferences order management tab
+    dá pra colocar o status padrão do pedido de venda
+    dá para habilitar o disparo de email automático quando o pedido for cancelado
+    dá para setar um armazem padrão de onde sairam os itens
+
 
 }
 
