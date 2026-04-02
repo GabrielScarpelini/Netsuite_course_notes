@@ -348,7 +348,6 @@ Subject area covered by the course
         set up pricing 1 to 7 
     }
 }
-
 6th Vídeo: Order Management: {
     este módulo trata de administrar inventários (warehouses) e Entrega de pedidos com controle de tempo.
     
@@ -383,6 +382,33 @@ Subject area covered by the course
     dá para habilitar o disparo de email automático quando o pedido for cancelado
     dá para setar um armazem padrão de onde sairam os itens
 
+
+    order to invoice Process:{
+        crinado uma SO do zero, após a criação dele o pedido ficou como pendente de aprovação, então se tiver a role que faça essa aprovação basta ir 
+        em vendas > aprovação de pedidos de vendas, dá para aprovar em massa ou indo no registro e apertar o botão, após isso o status será atualizado
+        para pendente de atendimento e tem o botão de atender. 
+
+        criando o atendimento: pode colocar a quantidade de atendimento e tem que aplicar o setar no flag, após a criação do registro ele ficará com status
+        de picked e após isso pode clicar em packed a após isso pode colocar como shipped SEPARADO, EMPACOTADO E ENVIADO. Após o shipped é liberado o botão
+        bill da atendimento do item, e o status do pedido fica como pendente de fatura. 
+        temos 2 opções, próxima fatura ou faurar remanescentes, após criar a bill, na bill, o campos created from fica com a SO e no ralated record fica em branco
+        e no pedido ficam amarradas as bills e os atendimentos dos itens. 
+
+        é possível fazer a impressão da fatura no botão da impressora, e para setar os forms de impressão é em transações > gerenciamento > imprimir cheques e forms
+        clicando na invoice você consegue setar a location, o form, temos o campo que nos indica os documentos na fila, e o botão de perimitir reimpressão. 
+        irão se preenchidas as linhas da sublista e pode imprimir mais de uma simultaneamente.  
+
+        se o multlocation estiver ativo, a localização fica obrigatória.
+
+        Dica: se precisar alterar o formulário, salve primeiro as alterações e depois altere formulário
+
+        caso crie uma SO que tenha um item de drop shipping, é criado um pedido de compra com este item (isso até para uma SO Que tenha 2 itens, vai criar uma PO
+        para cada item separadamente), assim quando o fornecedor enviar o item (drop shipping {por isso a PO}) é possível marcar o item como shipped
+        no item de drop ship temos a flag que indica que é dropshipping, se quiser que crie o pedido de compra automáticamente, precisa setar o flag do drop shipping
+        e colocar o fornecedor no item e marcar como preferencial 
+
+        e para itens de special ordem tem o flag de special order item e tem a tab do fornecedor também, para criar auto a PO precisa desses dados preenchidos.
+    }
 
 }
 
