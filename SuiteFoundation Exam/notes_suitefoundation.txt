@@ -408,6 +408,12 @@ Subject area covered by the course
         e colocar o fornecedor no item e marcar como preferencial 
 
         e para itens de special ordem tem o flag de special order item e tem a tab do fornecedor também, para criar auto a PO precisa desses dados preenchidos.
+
+        exercicios module 6 ex 1 pages: 60 64 
+        exercicios 2 to 5 order managemnet
+
+
+        olhar os reports disponiveis antes de fazer o teste. 
     }
 
 }
